@@ -1,0 +1,7 @@
+profile = "lington"
+region = "eu-west-3"
+ami = "ami-05b5a865c3579bbc4"
+keypath = "~/keypair/vaultkey.pub"
+instance_type = "t2.medium"
+domain-name = "greatestshalomventures.com"
+email = "imade@gmail.com"
