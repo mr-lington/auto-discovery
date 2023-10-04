@@ -34,12 +34,12 @@ resource "aws_iam_role" "vault-kms-unseal" {
 
 #  create iam role policy and attach the policy document
 resource "aws_iam_role_policy" "vault-kms-unseal" {
-  name   = "Vault-KMS-Unseal1"
+  name   = "Vault-KMS-Unseal1" 
   role   = aws_iam_role.vault-kms-unseal.id
   policy = data.aws_iam_policy_document.vault-kms-unseal.json
 }
 
-# create iam instance profile
+# create iam instance profile 
 resource "aws_iam_instance_profile" "vault-kms-unseal" {
   name = "vault-kms-unseal1"
   role = aws_iam_role.vault-kms-unseal.name
