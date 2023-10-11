@@ -15,3 +15,6 @@ variable "instance_type2" {}
 variable "subnet-id" {}
 variable "sonarqube-sg" {}
 variable "keypair" {}
+variable "ami-redhat" {}
+variable "newrelic-license-key" {}
+variable "newrelic-id" {}

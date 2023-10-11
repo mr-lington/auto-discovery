@@ -43,6 +43,6 @@ output "sonarqube-SG-ID" {
   value = aws_security_group.Sonarqube_SG.id
 }
 
-output "sonarqube-ip" {
-  value = aws_security_group.Sonarqube_SG.id
+output "nexus-SG-ID" {
+  value = aws_security_group.Nexus_SG.id
 }
