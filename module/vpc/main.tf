@@ -103,21 +103,7 @@ resource "aws_route_table_association" "PRT2-associated" {
   subnet_id      = aws_subnet.prv-sn-02.id
   route_table_id = aws_route_table.PRT.id
 }
-# RSA key of size 4096 bits
-resource "tls_private_key" "keypair" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-resource "local_file" "keypair" {
-  content  = tls_private_key.keypair.private_key_pem
-  filename = "keypair.pem"
-  file_permission = "600"
-}
-# Creating keypair
-resource "aws_key_pair" "keypair" {
-  key_name   = "keypair-name"
-  public_key = tls_private_key.keypair.public_key_openssh
-}
+
 #Creating Bastion Host and Ansible security group
 resource "aws_security_group" "Bastion-Ansible_SG" {
   name        = "Bastion-Ansible"

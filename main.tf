@@ -12,3 +12,16 @@ module "vpc" {
   az2 = var.az2
   allow_all_IP = var.allow_all_IP
   }
+
+module "keypair" {
+  source                 = "./module/keypair"
+  }
+
+  module "sonarqube-server" {
+  source                 = "./module/sonarqube"
+  ami = var.ami-ubuntu
+  instance-type= var.instance_type2
+  subnet-id= module.vpc.pubsub1
+  sonarqube-sg= module.vpc.sonarqube-SG-ID
+  keypair= module.keypair.out-pub-key
+  }
