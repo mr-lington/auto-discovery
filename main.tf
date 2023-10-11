@@ -25,3 +25,48 @@ module "keypair" {
   sonarqube-sg= module.vpc.sonarqube-SG-ID
   keypair= module.keypair.out-pub-key
   }
+
+  module "bastion" {
+  source                 = "./module/bastion-host"
+  ami = var.ami-redhat
+  instance-type = var.instance_type
+  bastion-SG = module.vpc.bastion-SG-ID
+  keypair = module.keypair.out-pub-key
+  subnet-id = module.vpc.pubsub2
+  private-keypair = module.keypair.out-priv-key
+  }
+
+module "nexus" {
+source                 = "./module/nexus"
+ami = var.ami-redhat
+instance-type = var.instance_type2
+keypair = module.keypair.out-pub-key
+nexus-SG = module.vpc.nexus-SG-ID
+subnet-id = module.vpc.pubsub1
+newrelic-acct-id = var.newrelic-id
+newrelic-user-licence = var.newrelic-license-key
+}
+
+module "jenkins" {
+  source                 = "./module/jenkins"
+  ami = var.ami-redhat
+  instance-type= var.instance_type2
+  keypair = module.keypair.out-pub-key
+  jenkins-SG= module.vpc.jenkins-SG-ID
+  subnet-id= module.vpc.prvsub1
+  subnet = [module.vpc.pubsub1]
+  nexus-ip= module.nexus.nexus-ip
+  newrelic-acct-id= var.newrelic-id
+  newrelic-user-licence= var.newrelic-license-key
+  }
+
+  module "ansible" {
+  source                 = "./module/ansible"
+  ami = var.ami-redhat
+  instance-type= var.instance_type2
+  keypair = module.keypair.out-pub-key
+  ansible-SG-ID= module.vpc.ansible-SG-ID
+  subnet-id= module.vpc.pubsub2
+  newrelic-acct-id= var.newrelic-id
+  newrelic-user-licence= var.newrelic-license-key
+  }
