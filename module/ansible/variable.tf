@@ -3,5 +3,13 @@ variable "instance-type" {}
 variable "ansible-SG-ID" {}
 variable "subnet-id" {}
 variable "keypair" {}
+variable "prod-bashscript" {}
+variable "prod-playbook" {}
+variable "prod-trigger" {}
+variable "stage-bashscript" {}
+variable "stage-playbook" {}
+variable "stage-trigger" {}
+variable "password" {}
+variable "nexus-ip" {}
 variable "newrelic-acct-id" {}
 variable "newrelic-user-licence" {}
