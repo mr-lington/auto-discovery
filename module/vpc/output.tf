@@ -4,7 +4,7 @@ output "vpc_id" {
 }
 
 output "prvsub1" {
-    value = aws_subnet.prv-sn-01
+    value = aws_subnet.prv-sn-01.id
 }
 
 output "prvsub2" {
@@ -12,11 +12,11 @@ output "prvsub2" {
 }
 
 output "pubsub1" {
-  value = aws_subnet.pub-sn-01
+  value = aws_subnet.pub-sn-01.id
 }
 
 output "pubsub2" {
-  value = aws_subnet.pub-sn-02
+  value = aws_subnet.pub-sn-02.id
 }
 
 # output "pubsub-id" {
@@ -40,5 +40,9 @@ output "jenkins-SG-ID" {
 }
 
 output "sonarqube-SG-ID" {
+  value = aws_security_group.Sonarqube_SG.id
+}
+
+output "sonarqube-ip" {
   value = aws_security_group.Sonarqube_SG.id
 }
