@@ -10,7 +10,7 @@ resource "aws_instance" "jenkins-server" {
   }
 }
 
-# Create a new load balancer
+# Create a jenkins load balancer
 resource "aws_elb" "lb" {
   name               = "jenkins-alb"
   subnets = [var.subnet-id]

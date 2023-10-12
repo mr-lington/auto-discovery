@@ -8,7 +8,11 @@ variable "prvsub2" {}
 variable "allow_all_IP" {}
 variable "az1" {}
 variable "az2" {}
-
+variable "domain" {}
+variable "domain2" {}
+variable "domain-jenkins" {}
+variable "domain-stage" {}
+variable "domain-prod" {}
 variable "ami-ubuntu" {}
 variable "instance_type" {}
 variable "instance_type2" {}
