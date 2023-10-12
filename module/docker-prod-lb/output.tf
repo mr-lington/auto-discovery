@@ -1,4 +1,4 @@
-output "prod_target-group" {
+output "prod-tg-arn" {
  value = aws_lb_target_group.prod_target-group.arn
 }
 

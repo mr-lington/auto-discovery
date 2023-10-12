@@ -4,7 +4,7 @@ resource "aws_lb" "prod-lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.prod-lb-SG]
-  subnets            = [var.subnets]
+  subnets            = var.subnets
   enable_deletion_protection = false
   tags = {
     Environment = "prod-lb"
