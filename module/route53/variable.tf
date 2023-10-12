@@ -1,0 +1,10 @@
+variable "domain-name" {}
+variable "domain-name-stage" {}
+variable "stage-lb-dns-name" {}
+variable "stage-lb-zone-id" {}
+variable "domain-name-prod" {}
+variable "prod-lb-dns-name" {}
+variable "prod-lb-zone-id" {}
+variable "jenkins-lb-dns-name" {}
+variable "jenkins-lb-zone-id" {}
+variable "domain-name-jenkins" {}

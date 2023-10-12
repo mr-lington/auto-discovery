@@ -1,5 +1,5 @@
 # out the vpc ID
-output "vpc_id" {
+output "vpc-id" {
   value = aws_vpc.vpc.id
 }
 
@@ -19,9 +19,9 @@ output "pubsub2" {
   value = aws_subnet.pub-sn-02.id
 }
 
-# output "pubsub-id" {
-#   value = [aws_subnet.lington-pubsub2.id, aws_subnet.lington-pubsub1.id]
-# }
+output "pubsubs1-2-id" {
+  value = [aws_subnet.pub-sn-01.id, aws_subnet.pub-sn-02.id]
+}
 
 output "ansible-SG-ID" {
   value = aws_security_group.Bastion-Ansible_SG.id
