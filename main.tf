@@ -54,7 +54,7 @@ module "jenkins" {
   keypair               = module.keypair.out-pub-key
   jenkins-SG            = module.vpc.jenkins-SG-ID
   subnet-id             = module.vpc.prvsub1
-  subnet                = [module.vpc.pubsub1]
+  subnets-id            = module.vpc.pubsubs1-2-id
   nexus-ip              = module.nexus.nexus-ip
   newrelic-acct-id      = var.newrelic-id
   newrelic-user-licence = var.newrelic-license-key
@@ -114,4 +114,34 @@ module "acm" {
   source  = "./module/acm"
   domain  = var.domain
   domain2 = var.domain2
+}
+
+module "stage-asg" {
+  source                = "./module/stage-asg"
+  ami                   = var.ami-redhat
+  instance-type         = var.instance_type2
+  stage-SG-ID           = module.vpc.docker-SG
+  keypair               = module.keypair.out-pub-key
+  stage-asg-name        = "${local.name}-stage-asg"
+  vpc-zone-identifier   = [module.vpc.prvsub1, module.vpc.prvsub1]
+  tg-arn                = module.docker-stage-lb.stage-tg-arn
+  asg-policy            = "${local.name}-asg-policy"
+  nexus-ip              = module.nexus.nexus-ip
+  newrelic-acct-id      = var.newrelic-id
+  newrelic-user-licence = var.newrelic-license-key
+}
+
+module "prod-asg" {
+  source                = "./module/prod-asg"
+  ami                   = var.ami-redhat
+  instance-type         = var.instance_type2
+  prod-SG-ID            = module.vpc.docker-SG
+  keypair               = module.keypair.out-pub-key
+  prod-asg-name         = "${local.name}-prod-asg"
+  vpc-zone-identifier   = [module.vpc.prvsub1, module.vpc.prvsub1]
+  tg-arn                = module.docker-prod-lb.prod-tg-arn
+  asg-policy            = "${local.name}-asg-policy"
+  nexus-ip              = module.nexus.nexus-ip
+  newrelic-acct-id      = var.newrelic-id
+  newrelic-user-licence = var.newrelic-license-key
 }

@@ -13,7 +13,7 @@ resource "aws_instance" "jenkins-server" {
 # Create a jenkins load balancer
 resource "aws_elb" "lb" {
   name               = "jenkins-alb"
-  subnets = [var.subnet-id]
+  subnets = var.subnets-id
   security_groups = [var.jenkins-SG]
 
   listener {

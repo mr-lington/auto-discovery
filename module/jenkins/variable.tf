@@ -6,4 +6,4 @@ variable "subnet-id" {}
 variable "nexus-ip" {}
 variable "newrelic-acct-id" {}
 variable "newrelic-user-licence" {}
-variable "subnet" {}
+variable "subnets-id" {}
