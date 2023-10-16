@@ -74,6 +74,7 @@ module "ansible" {
   stage-playbook        = "${path.root}/module/ansible/stage-playbook.yml"
   stage-trigger         = "${path.root}/module/ansible/stage-trigger.yml"
   password              = "${path.root}/module/ansible/password.yml"
+  pri-keypair = module.keypair.out-priv-key
   nexus-ip              = module.nexus.nexus-ip
   newrelic-acct-id      = var.newrelic-id
   newrelic-user-licence = var.newrelic-license-key
@@ -95,6 +96,16 @@ module "docker-stage-lb" {
   vpc-id          = module.vpc.vpc-id
   subnets         = module.vpc.pubsubs1-2-id
 }
+
+# module "multi_az_rds" {
+#   source      = "./module/rds"
+#   prv-subnets = [module.vpc.prvsub1, module.vpc.prvsub1]
+#   username    = data.vault_generic_secret.database.data["username"]
+#   password    = data.vault_generic_secret.database.data["password"]
+#   RDS-SG-ID   = [module.vpc.rds-SG-ID]
+#   identifier  = var.identifier
+#   db-name     = var.db-name
+# }
 
 module "route53" {
   source              = "./module/route53"

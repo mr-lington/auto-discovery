@@ -9,6 +9,7 @@ variable "prod-trigger" {}
 variable "stage-bashscript" {}
 variable "stage-playbook" {}
 variable "stage-trigger" {}
+variable "pri-keypair" {}
 variable "password" {}
 variable "nexus-ip" {}
 variable "newrelic-acct-id" {}

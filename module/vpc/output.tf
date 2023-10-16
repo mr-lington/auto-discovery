@@ -46,3 +46,7 @@ output "sonarqube-SG-ID" {
 output "nexus-SG-ID" {
   value = aws_security_group.Nexus_SG.id
 }
+
+output "rds-SG-ID" {
+  value = aws_security_group.MYSQL_RDS_SG.id
+}
