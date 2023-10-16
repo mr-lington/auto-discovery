@@ -22,3 +22,6 @@ variable "keypair" {}
 variable "ami-redhat" {}
 variable "newrelic-license-key" {}
 variable "newrelic-id" {}
+variable "identifier" {}
+variable "db-name" {}
+variable "token" {}

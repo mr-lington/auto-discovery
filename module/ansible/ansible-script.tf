@@ -37,7 +37,7 @@ sudo echo "${file(var.stage-bashscript)}" >> /etc/ansible/stage-bashscript.sh
 sudo echo "${file(var.stage-playbook)}" >> /etc/ansible/stage-playbook.yml
 sudo echo "${file(var.stage-trigger)}" >> /etc/ansible/stage-trigger.yml
 sudo echo "${file(var.password)}" >> /etc/ansible/password.yml
-sudo echo "${var.keypair}" >> /etc/ansible/key.pem
+sudo echo "${var.pri-keypair}" >> /etc/ansible/key.pem
 sudo bash -c 'echo "NEXUS_IP: ${var.nexus-ip}:8085" > /etc/ansible/ansible_vars_file.yml'
 echo 'admin123' > /etc/ansible/pass.txt
 ansible-vault encrypt --vault-password-file /etc/ansible/pass.txt /etc/ansible/prod-playbook.yml
